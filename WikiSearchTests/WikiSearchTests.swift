@@ -11,24 +11,41 @@ import XCTest
 
 class WikiSearchTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    func generateSearchURL(for query: String) -> URL {
+        guard var urlComponents = URLComponents(string: Constants.wikipediaBaseURLString) else { fatalError() }
+        let actionQI = URLQueryItem(name: "action", value: "query")
+        let listQI = URLQueryItem(name: "list", value: "search")
+        let limitQI = URLQueryItem(name: "srlimit", value: "10")
+        let formatQI = URLQueryItem(name: "format", value: "json")
+        let searchQI = URLQueryItem(name: "srsearch", value: query)
+        urlComponents.queryItems = [actionQI, limitQI, formatQI, listQI, searchQI]
+        return urlComponents.url!
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    func test_API() throws {
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let expect = XCTestExpectation()
+        let request = URLRequest(url: generateSearchURL(for: "nelson"))
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
+            guard let strongSelf = self else { return } // If another request has come in, this will be deallocated
+            guard let data = data, let response = response else { return }
+            print("*****")
+//            let responseString = String(data: data, encoding: .utf8)
+//            print(responseString)
+            do {
+                let apiResponse = try JSONDecoder().decode(SearchAPIResponse.self, from: data)
+                print(apiResponse)
+            } catch let err {
+                print(err)
+            }
+            expect.fulfill()
         }
+        task.resume()
+        wait(for: [expect], timeout: 20.0)
     }
+
+
 
 }
