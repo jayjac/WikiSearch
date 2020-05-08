@@ -45,7 +45,6 @@ class MainLayoutManager {
         tableView.registerCellType(SearchTableViewCell.self)
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            //tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

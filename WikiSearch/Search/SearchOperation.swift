@@ -16,6 +16,7 @@ class SearchOperation: Operation {
     private let page: Int
     private let searchText: String
     private(set) var searchResultArray: [SearchResult] = [SearchResult]()
+    private var urlSession: URLSessionProtocol?
     
     
     init(searchText: String, page: Int) {
@@ -23,8 +24,8 @@ class SearchOperation: Operation {
         self.searchText = searchText
     }
     
-    
-    func parseResponse(data: Data?) {
+
+    private func parseResponse(data: Data?) {
         guard let data = data else { return }
         guard let apiResponse = try? JSONDecoder().decode(SearchAPIResponse.self, from: data) else { return }
         searchResultArray = apiResponse.query.search
@@ -37,7 +38,7 @@ class SearchOperation: Operation {
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         let request = URLRequest(url: SearchManager.generateSearchURL(page: page, for: searchText))
-        let session = URLSession(configuration: .default)
+        let session = urlSession ?? URLSession(configuration: .default)
         session.dataTask(with: request) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
             guard
                 let strongSelf = self,
@@ -47,6 +48,13 @@ class SearchOperation: Operation {
         }.resume()
         dispatchGroup.wait()
     }
-    
-    
+
 }
+
+#if DEBUG
+extension SearchOperation {
+    func _setURLSession(_ session: URLSessionProtocol) {
+        urlSession = session
+    }
+}
+#endif

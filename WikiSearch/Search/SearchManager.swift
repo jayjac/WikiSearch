@@ -28,7 +28,7 @@ class SearchManager {
         queue.qualityOfService = .userInitiated
     }
     
-    static func generateSearchURL(page: Int, for query: String) -> URL {
+    static func generateSearchURL(page: Int, for query: String, language: String = "en") -> URL {
         guard var urlComponents = URLComponents(string: Constants.wikipediaBaseURLString) else { fatalError() }
         let actionQI = URLQueryItem(name: "action", value: "query")
         let offsetQI = URLQueryItem(name: "sroffset", value: "\(page)")

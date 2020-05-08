@@ -41,7 +41,6 @@ class SearchTableViewCell: UITableViewCell {
             contentView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -5.0),
             contentView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -5.0),
             contentView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 5.0),
-            //contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10.0)
         ])
     }
     

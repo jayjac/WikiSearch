@@ -11,19 +11,37 @@ import CoreData
 
 class CoreDataStack {
     
-
-    private let persistentContainer: NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     
-    init(container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch")) {
+    static var shared: CoreDataStack!
 
-        self.persistentContainer = container
-        persistentContainer.loadPersistentStores() { (description, error) in
-            if let error = error {
-                fatalError("Failed to load Core Data stack: \(error)")
-            }
-            //completionClosure()
+    /*
+     * Should only be called once, and with no container argument for release builds
+     */
+    class func initialize(
+        container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch"),
+                          completionClosure: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
+        if shared == nil {
+            shared = CoreDataStack(container: container, completionClosure: completionClosure)
         }
+    }
+    
+    private init(container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch"), completionClosure: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
+        self.persistentContainer = container
+        persistentContainer.loadPersistentStores(completionHandler: completionClosure)
     }
     
     
 }
+
+
+#if DEBUG
+extension CoreDataStack {
+    class func reset() {
+        shared = nil
+    }
+}
+#endif
