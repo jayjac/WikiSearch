@@ -13,10 +13,6 @@ class SearchManager_Tests: XCTestCase {
 
 
 
-    func test_Correct_URL_Generated() throws {
-        let url = SearchManager.generateSnippetSearchURL(page: 0, for: "blabla")
-        XCTAssertEqual(url.scheme, "https")
-    }
 
 
 }

@@ -19,7 +19,7 @@ struct Constants {
         return "https://\(language).wikipedia.org/w/api.php"
     }
     
-    static let resultsCount: Int = 400
+    static let resultsCount: Int = 100
     
     private init() {}
 }

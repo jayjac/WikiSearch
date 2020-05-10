@@ -8,11 +8,18 @@
 
 import UIKit
 
-class ResultsViewController: UIViewController {
+class DetailViewController: UIViewController {
+    
+    private let rootView: DetailScreenRootView = DetailScreenRootView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view = rootView
+    }
+    
+    func loadURL(url: URL) {
+        rootView.load(url: url)
     }
 
 

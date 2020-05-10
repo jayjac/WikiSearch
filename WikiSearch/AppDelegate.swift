@@ -23,19 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator.start()
     }
     
-    #if DEBUG
-    private func createTestWindow() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        appCoordinator = TestAppCoordinator(window: window)
-        appCoordinator.start()
-    }
-    #endif
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        CoreDataStack.initialize { (description, err) in
+            print("core data initialized")
+        }
         createWindow()
-        //createTestWindow()
         return true
     }
 

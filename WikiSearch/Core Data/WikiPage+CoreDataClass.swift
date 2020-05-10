@@ -45,7 +45,8 @@ public class WikiPage: NSManagedObject, Decodable {
     }
     
     public convenience required init(from decoder: Decoder) throws {
-        self.init(context: CoreDataStack.shared.context)
+        // Always decode in background context
+        self.init(context: CoreDataStack.shared.backgroundContext)
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         fullURL = try? values.decode(URL.self, forKey: .fullurl)

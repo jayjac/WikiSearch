@@ -28,10 +28,9 @@ import CoreData
 
 class CoreDataStack {
     
-    let persistentContainer: NSPersistentContainer
-    var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
+    private var persistentContainer: NSPersistentContainer
+    private(set) lazy var viewContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    private(set) lazy var backgroundContext: NSManagedObjectContext = self.persistentContainer.newBackgroundContext()
     
     private(set) static var shared: CoreDataStack!
 
@@ -44,6 +43,9 @@ class CoreDataStack {
         if shared == nil {
             shared = CoreDataStack(container: container, completionClosure: completionClosure)
         }
+        #if DEBUG
+        shared.persistentContainer = container
+        #endif
     }
     
     private init(container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch"), completionClosure: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
@@ -58,8 +60,8 @@ class CoreDataStack {
         context.performAndWait {
             guard let apiResponse = try? JSONDecoder().decode(URLAPIResponse.self, from: data) else { return }
             apiResponse.query.search.forEach { (page) in
-                page.saveDate = Date()
-                objectIDS.append(page.objectID)
+//                page.saveDate = Date()
+//                objectIDS.append(page.objectID)
             }
         }
        do {

@@ -58,32 +58,34 @@ class WikiPage_Tests: XCTestCase {
 
     
     func test_WikiPage_Created() throws {
-        var result = try CoreDataStack.shared.context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
+        let context = CoreDataStack.shared.viewContext
+        var result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
         XCTAssertEqual(result.count, 0)
-        let page = WikiPage(context: CoreDataStack.shared.context)
+        let page = WikiPage(context: context)
         page.title = "blabla"
         page.pageid = Int64(1234)
-        try CoreDataStack.shared.context.save()
-        result = try CoreDataStack.shared.context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
+        try context.save()
+        result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
         XCTAssertEqual(result.count, 1)
     }
     
     func test_WikiPage_Throws_error_when_pageid_duplicate() throws {
-        var result = try CoreDataStack.shared.context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
+        let context = CoreDataStack.shared.viewContext
+        var result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
         XCTAssertEqual(result.count, 0)
-        let page = WikiPage(context: CoreDataStack.shared.context)
+        let page = WikiPage(context: context)
         page.title = "blabla"
         page.pageid = Int64(1234)
 
         
-        let page1 = WikiPage(context: CoreDataStack.shared.context)
+        let page1 = WikiPage(context: context)
         page1.title = "blabla"
         page1.pageid = Int64(1234)
 
         
-        result = try CoreDataStack.shared.context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
+        result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
         XCTAssertEqual(result.count, 2)
-        XCTAssertThrowsError(try CoreDataStack.shared.context.save())
+        XCTAssertThrowsError(try context.save())
     }
 
 }

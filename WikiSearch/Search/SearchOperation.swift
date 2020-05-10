@@ -38,7 +38,7 @@ class SearchOperation: Operation {
         self.type = type
         self.page = page
         self.searchText = searchText
-        let url = type == SearchOperationType.snippet ? SearchManager.generateSnippetSearchURL(page: page, for: searchText) : SearchManager.generateSnippetSearchURL(page: page, for: searchText)
+        let url = type == SearchOperationType.snippet ? WikiURLGenerator.generateSnippetSearchURL(page: page, for: searchText) : WikiURLGenerator.generateSnippetSearchURL(page: page, for: searchText)
         self.request = URLRequest(url: url)
     }
     
@@ -50,6 +50,7 @@ class SearchOperation: Operation {
             
         case .url:
             pagesObjectIDS = CoreDataStack.shared.parseURLResponse(data: data)
+        
         }
     }
 
@@ -66,13 +67,14 @@ class SearchOperation: Operation {
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         let session = urlSession ?? URLSession(configuration: .default)
-        session.dataTask(with: request) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
+        session.resumedDataTask(with: request) { [weak self] (data: Data?, respose: URLResponse?, error: Error?) in
             guard
                 let strongSelf = self,
                 !strongSelf.isCancelled else { return } // If another request has come in, this will be deallocated
             strongSelf.parseData(data: data)
             dispatchGroup.leave()
-        }.resume()
+        }
+
         dispatchGroup.wait()
     }
 

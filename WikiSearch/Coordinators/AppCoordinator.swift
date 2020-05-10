@@ -11,10 +11,10 @@ class AppCoordinator: Coordinator {
     
     private let window: UIWindow
     private let searchViewController = SearchViewController()
-    private let resultsViewController = ResultsViewController()
+    private let detailViewController = DetailViewController()
     private lazy var rootViewController: UISplitViewController = {
         let vc = UISplitViewController()
-        vc.viewControllers = [self.searchViewController, self.resultsViewController]
+        vc.viewControllers = [self.searchViewController, self.detailViewController]
         vc.preferredDisplayMode = .allVisible
         return vc
     }()
@@ -29,19 +29,15 @@ class AppCoordinator: Coordinator {
     }
 }
 
-class TestAppCoordinator: Coordinator {
-    
-    private let window: UIWindow
-
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        window.rootViewController = TestViewController()
-        window.makeKeyAndVisible()
+extension AppCoordinator: SearchResultViewModelDelegate {
+    func openSearchResultURL(url: URL) {
+        detailViewController.loadURL(url: url)
+        rootViewController.show(detailViewController, sender: nil)
     }
 }
+
+
+
+
 
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SearchResultDelegate: class {
+protocol SearchResultViewModelDelegate: class {
     func openSearchResultURL(url: URL)
 }
 
@@ -16,9 +16,10 @@ protocol SearchResultDelegate: class {
 class SearchResultViewModel {
     
     private let result: SearchResultProtocol
-    private weak var delegate: SearchResultDelegate?
+    private weak var delegate: SearchResultViewModelDelegate?
     
-    init(result: SearchResultProtocol, delegate: SearchResultDelegate) {
+    init(result: SearchResultProtocol,
+         delegate: SearchResultViewModelDelegate?) {
         self.result = result
         self.delegate = delegate
     }

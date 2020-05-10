@@ -24,5 +24,20 @@ class DatesManager_Tests: XCTestCase {
         XCTAssertEqual(calendar.component(.minute, from: date), 41)
         XCTAssertEqual(calendar.component(.second, from: date), 50)
     }
+    
+    
+    func test_HumanReadable_Date() throws {
+        let timezone = try XCTUnwrap(TimeZone(secondsFromGMT: 0))
+        let date = try XCTUnwrap(DatesManager.date(from: "2020-05-08T02:41:50Z"))
+        let frenchLocale = Locale(identifier: "fr")
+        let frenchDate: String = DatesManager.humanReadableDateString(from: date, locale: frenchLocale, timeZone: timezone)
+        XCTAssertTrue(frenchDate.hasPrefix("8 mai 2020"))
+        
+        let englishLocale = Locale(identifier: "en_US")
+        let englishDate: String = DatesManager.humanReadableDateString(from: date, locale: englishLocale, timeZone: timezone)
+        print(englishDate)
+        XCTAssertTrue(englishDate.hasPrefix("May 8, 2020"))
+        XCTAssertTrue(englishDate.hasSuffix("2:41:50 AM"))
+    }
 
 }

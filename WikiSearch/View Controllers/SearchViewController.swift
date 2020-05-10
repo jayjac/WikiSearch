@@ -10,27 +10,21 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    let searchBar = UISearchBar()
-    let tableView = UITableView()
-    
-    lazy var layoutManager: MainLayoutManager = {
-        let layout = MainLayoutManager(rootView: self.view, tableView: self.tableView, searchBar: self.searchBar)
-        return layout
-    }()
-    
-    lazy var searchManager: SearchManager = {
+    private let rootView: SearchScreenRootView = SearchScreenRootView()
+    private(set) lazy var searchBar = self.rootView.searchBar
+    private(set) lazy var  tableView = self.rootView.tableView
+    private lazy var searchManager: SearchManager = {
         let manager = SearchManager(delegate: self)
         return manager
     }()
+    private lazy var dataSource: SearchTableViewDataSource = SearchTableViewDataSource()
+    weak var searchResultDelegate: SearchResultViewModelDelegate?
+
     
-    lazy var dataSource: SearchTableViewDataSource = {
-        let source = SearchTableViewDataSource(searchManager: self.searchManager)
-        return source
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        layoutManager.setupUI()
+        self.view = rootView
         searchBar.delegate = self
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
@@ -44,20 +38,19 @@ extension SearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text else {
             return
         }
-        searchManager.clearAllResults()
+
         tableView.reloadData()
         searchManager.search(for: text)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("cancel clicked")
     }
     
 }
 
 extension SearchViewController: SearchManagerDelegate {
-    func searchManagerDidFindResults() {
-        tableView.reloadData()
+    func searchManagerDidFindResults(_ results: [SearchResultProtocol]) {
+        let viewModels = results.map {
+            SearchResultViewModel(result: $0, delegate: self.searchResultDelegate)
+        }
+        dataSource.updateResults(viewModels)
     }
 }
 
