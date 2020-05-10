@@ -17,10 +17,12 @@ extension WikiPage {
         return NSFetchRequest<WikiPage>(entityName: "WikiPage")
     }
 
-    @NSManaged public var timestamp: String?
     @NSManaged public var pageid: Int64
-    @NSManaged public var snippet: String?
     @NSManaged public var title: String?
-    @NSManaged public var url: URL?
-
+    @NSManaged public var snippet: String?
+    @NSManaged public var fullURL: URL?
+    @NSManaged public var lastRevision: Date?
+    @NSManaged public var saveDate: Date?
+    @NSManaged public var language: String?
+    
 }

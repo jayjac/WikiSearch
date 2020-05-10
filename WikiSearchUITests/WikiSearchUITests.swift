@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import WikiSearch
 
 class WikiSearchUITests: XCTestCase {
 
@@ -22,10 +23,12 @@ class WikiSearchUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        
+    
+    func testSomething() throws {
+                        
     }
+
+
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		E9230376246519080093AE87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9230375246519080093AE87 /* Localizable.strings */; };
-		E925B7932465DF49000DD7C5 /* WikiPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925B7912465DF49000DD7C5 /* WikiPage+CoreDataClass.swift */; };
-		E925B7942465DF49000DD7C5 /* WikiPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925B7922465DF49000DD7C5 /* WikiPage+CoreDataProperties.swift */; };
 		E94A90AF2462345D00B8F0B9 /* SearchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90AE2462345D00B8F0B9 /* SearchTableViewDataSource.swift */; };
 		E94A90B22462350B00B8F0B9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B12462350B00B8F0B9 /* SearchTableViewCell.swift */; };
 		E94A90B42462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */; };
-		E94A90B7246237BF00B8F0B9 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B6246237BF00B8F0B9 /* SearchResult.swift */; };
+		E94A90B7246237BF00B8F0B9 /* SnippetSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B6246237BF00B8F0B9 /* SnippetSearchResult.swift */; };
 		E94A90BB2462FDA400B8F0B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90BA2462FDA400B8F0B9 /* Coordinator.swift */; };
 		E98EF5212465BC2D0071AB31 /* WikiSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */; };
 		E98EF5222465BC2F0071AB31 /* WikiSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */; };
 		E98EF5252465BDE10071AB31 /* CoreDataStack-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */; };
 		E99E78502465F44F007CFB93 /* WikiPage-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */; };
+		E99E7852246631A9007CFB93 /* Constants-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E7851246631A9007CFB93 /* Constants-Tests.swift */; };
+		E99E785924664808007CFB93 /* WikiPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E785724664808007CFB93 /* WikiPage+CoreDataClass.swift */; };
+		E99E785A24664808007CFB93 /* WikiPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E785824664808007CFB93 /* WikiPage+CoreDataProperties.swift */; };
+		E99E785D24671CD1007CFB93 /* SwiftTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E785C24671CD1007CFB93 /* SwiftTypeExtensions.swift */; };
+		E99E785F24673BFA007CFB93 /* SearchResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E785E24673BFA007CFB93 /* SearchResultProtocol.swift */; };
+		E99E786124673EEC007CFB93 /* URLSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E786024673EEC007CFB93 /* URLSearchResult.swift */; };
+		E99E786324677B7A007CFB93 /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E786224677B7A007CFB93 /* DatesManager.swift */; };
+		E99E786624677C54007CFB93 /* DatesManager-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E786524677C54007CFB93 /* DatesManager-Tests.swift */; };
 		E9DAF6702461F43B0038D320 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DAF66F2461F43B0038D320 /* CoreDataStack.swift */; };
 		E9DAF6722461FCD90038D320 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DAF6712461FCD90038D320 /* SearchManager.swift */; };
 		E9DAF67524620FEB0038D320 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DAF67424620FEB0038D320 /* SearchViewController.swift */; };
@@ -62,15 +68,21 @@
 
 /* Begin PBXFileReference section */
 		E9230375246519080093AE87 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		E925B7912465DF49000DD7C5 /* WikiPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E925B7922465DF49000DD7C5 /* WikiPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E94A90AE2462345D00B8F0B9 /* SearchTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewDataSource.swift; sourceTree = "<group>"; };
 		E94A90B12462350B00B8F0B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
-		E94A90B6246237BF00B8F0B9 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		E94A90B6246237BF00B8F0B9 /* SnippetSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetSearchResult.swift; sourceTree = "<group>"; };
 		E94A90BA2462FDA400B8F0B9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack-Tests.swift"; sourceTree = "<group>"; };
 		E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage-Tests.swift"; sourceTree = "<group>"; };
+		E99E7851246631A9007CFB93 /* Constants-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants-Tests.swift"; sourceTree = "<group>"; };
+		E99E785724664808007CFB93 /* WikiPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E99E785824664808007CFB93 /* WikiPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E99E785C24671CD1007CFB93 /* SwiftTypeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTypeExtensions.swift; sourceTree = "<group>"; };
+		E99E785E24673BFA007CFB93 /* SearchResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultProtocol.swift; sourceTree = "<group>"; };
+		E99E786024673EEC007CFB93 /* URLSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSearchResult.swift; sourceTree = "<group>"; };
+		E99E786224677B7A007CFB93 /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
+		E99E786524677C54007CFB93 /* DatesManager-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatesManager-Tests.swift"; sourceTree = "<group>"; };
 		E9DAF66F2461F43B0038D320 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E9DAF6712461FCD90038D320 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		E9DAF67424620FEB0038D320 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -139,8 +151,10 @@
 		E94A90B5246237AB00B8F0B9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E94A90B6246237BF00B8F0B9 /* SearchResult.swift */,
+				E99E786024673EEC007CFB93 /* URLSearchResult.swift */,
+				E94A90B6246237BF00B8F0B9 /* SnippetSearchResult.swift */,
 				E9DE4DEC2463D0E5001A1D8B /* SearchResultViewModel.swift */,
+				E99E785E24673BFA007CFB93 /* SearchResultProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,16 +174,33 @@
 			isa = PBXGroup;
 			children = (
 				E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */,
-				E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		E99E785B24671CA6007CFB93 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE4DF4246484E6001A1D8B /* Constants.swift */,
+				E99E785C24671CD1007CFB93 /* SwiftTypeExtensions.swift */,
+				E99E786224677B7A007CFB93 /* DatesManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E99E786424677C47007CFB93 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E99E786524677C54007CFB93 /* DatesManager-Tests.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E9DAF66E2461F4250038D320 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				E925B7912465DF49000DD7C5 /* WikiPage+CoreDataClass.swift */,
-				E925B7922465DF49000DD7C5 /* WikiPage+CoreDataProperties.swift */,
+				E99E785724664808007CFB93 /* WikiPage+CoreDataClass.swift */,
+				E99E785824664808007CFB93 /* WikiPage+CoreDataProperties.swift */,
 				E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */,
 				E9DAF66F2461F43B0038D320 /* CoreDataStack.swift */,
 			);
@@ -199,6 +230,7 @@
 		E9DE4DFB2464D909001A1D8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */,
 				E9DE4DF024647B7B001A1D8B /* SearchResult-Tests.swift */,
 			);
 			path = Models;
@@ -254,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FF641F245DA92D002B9E39 /* AppDelegate.swift */,
+				E99E785B24671CA6007CFB93 /* Utils */,
 				E9DE4DE92463C44B001A1D8B /* Coordinators */,
 				E94A90BC2462FE2400B8F0B9 /* Search */,
 				E94A90B5246237AB00B8F0B9 /* Models */,
@@ -263,7 +296,6 @@
 				E9FF642B245DA92E002B9E39 /* Assets.xcassets */,
 				E9FF642D245DA92E002B9E39 /* LaunchScreen.storyboard */,
 				E9FF6430245DA92E002B9E39 /* Info.plist */,
-				E9DE4DF4246484E6001A1D8B /* Constants.swift */,
 				E9230375246519080093AE87 /* Localizable.strings */,
 			);
 			path = WikiSearch;
@@ -272,12 +304,14 @@
 		E9FF6438245DA92E002B9E39 /* WikiSearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				E99E786424677C47007CFB93 /* Utils */,
 				E98EF5232465BDBE0071AB31 /* Core Data */,
 				E9DE4E042464E414001A1D8B /* Search */,
 				E9DE4DFF2464DA0E001A1D8B /* Views */,
 				E9DE4DFC2464D92C001A1D8B /* ViewControllers */,
 				E9DE4DFB2464D909001A1D8B /* Models */,
 				E9FF643B245DA92E002B9E39 /* Info.plist */,
+				E99E7851246631A9007CFB93 /* Constants-Tests.swift */,
 			);
 			path = WikiSearchTests;
 			sourceTree = "<group>";
@@ -425,21 +459,25 @@
 			files = (
 				E9DE4E0A24650A61001A1D8B /* URLSessionProtocol.swift in Sources */,
 				E9DE4DEF246453D5001A1D8B /* TestViewController.swift in Sources */,
+				E99E785F24673BFA007CFB93 /* SearchResultProtocol.swift in Sources */,
 				E9DE4DEB2463C464001A1D8B /* AppCoordinator.swift in Sources */,
-				E94A90B7246237BF00B8F0B9 /* SearchResult.swift in Sources */,
+				E94A90B7246237BF00B8F0B9 /* SnippetSearchResult.swift in Sources */,
+				E99E786124673EEC007CFB93 /* URLSearchResult.swift in Sources */,
 				E94A90B22462350B00B8F0B9 /* SearchTableViewCell.swift in Sources */,
-				E925B7932465DF49000DD7C5 /* WikiPage+CoreDataClass.swift in Sources */,
+				E99E785924664808007CFB93 /* WikiPage+CoreDataClass.swift in Sources */,
 				E9DAF67524620FEB0038D320 /* SearchViewController.swift in Sources */,
+				E99E786324677B7A007CFB93 /* DatesManager.swift in Sources */,
 				E9DE4DF92464924B001A1D8B /* MainLayoutManager.swift in Sources */,
 				E9FF642A245DA92D002B9E39 /* WikiSearch.xcdatamodeld in Sources */,
 				E9DE4DF324648422001A1D8B /* SearchOperation.swift in Sources */,
+				E99E785D24671CD1007CFB93 /* SwiftTypeExtensions.swift in Sources */,
 				E9DE4DF5246484E6001A1D8B /* Constants.swift in Sources */,
 				E9DAF677246229E70038D320 /* ResultsViewController.swift in Sources */,
 				E94A90B42462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift in Sources */,
 				E9DAF6722461FCD90038D320 /* SearchManager.swift in Sources */,
 				E9DE4DED2463D0E5001A1D8B /* SearchResultViewModel.swift in Sources */,
 				E94A90BB2462FDA400B8F0B9 /* Coordinator.swift in Sources */,
-				E925B7942465DF49000DD7C5 /* WikiPage+CoreDataProperties.swift in Sources */,
+				E99E785A24664808007CFB93 /* WikiPage+CoreDataProperties.swift in Sources */,
 				E9FF6420245DA92D002B9E39 /* AppDelegate.swift in Sources */,
 				E94A90AF2462345D00B8F0B9 /* SearchTableViewDataSource.swift in Sources */,
 				E9DAF6702461F43B0038D320 /* CoreDataStack.swift in Sources */,
@@ -457,7 +495,9 @@
 				E99E78502465F44F007CFB93 /* WikiPage-Tests.swift in Sources */,
 				E9DE4E012464DC31001A1D8B /* UITableViewCell+ReuseIdentifier-Tests.swift in Sources */,
 				E98EF5252465BDE10071AB31 /* CoreDataStack-Tests.swift in Sources */,
+				E99E7852246631A9007CFB93 /* Constants-Tests.swift in Sources */,
 				E9DE4E08246503D1001A1D8B /* SearchOperation-Tests.swift in Sources */,
+				E99E786624677C54007CFB93 /* DatesManager-Tests.swift in Sources */,
 				E9DE4E062464E42B001A1D8B /* SearchManager-Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

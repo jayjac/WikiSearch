@@ -11,16 +11,26 @@ import CoreData
 @testable import WikiSearch
 
 class CoreDataStack_Tests: XCTestCase {
-
-
-    func test_Stack_Created() throws {
-        let container = NSPersistentContainer(name: "WikiSearch")
+    
+    var correctContainer: NSPersistentContainer!
+    
+    override func setUp() {
+        correctContainer = NSPersistentContainer(name: "WikiSearch")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
-        container.persistentStoreDescriptions = [description]
+        correctContainer.persistentStoreDescriptions = [description]
+    }
+    
+    override func tearDown() {
+        correctContainer = nil
+    }
+    
+    
+    func test_Stack_Created_Successfully() throws {
         let expectation = XCTestExpectation(description: "no error")
         var storeDescription: NSPersistentStoreDescription? = nil
-        CoreDataStack.initialize(container: container, completionClosure: { (descrip: NSPersistentStoreDescription, err: Error?) in
+        CoreDataStack.initialize(container: correctContainer, completionClosure: { (descrip: NSPersistentStoreDescription, err: Error?) in
+            // This closure is called when Model file OK
             storeDescription = descrip
             expectation.fulfill()
         })
@@ -35,11 +45,13 @@ class CoreDataStack_Tests: XCTestCase {
         container.persistentStoreDescriptions = [description]
         var storeDescription: NSPersistentStoreDescription? = nil
         CoreDataStack.initialize(container: container, completionClosure: { (descrip: NSPersistentStoreDescription, err: Error?) in
+            // This closure is never called when model file name erroneous
             storeDescription = descrip
         })
         Thread.sleep(forTimeInterval: 1.0)
         XCTAssertNil(storeDescription)
     }
+    
 
 
 }

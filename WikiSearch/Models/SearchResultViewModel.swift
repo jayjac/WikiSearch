@@ -8,21 +8,41 @@
 
 import Foundation
 
+protocol SearchResultDelegate: class {
+    func openSearchResultURL(url: URL)
+}
+
 
 class SearchResultViewModel {
     
-    private let searchResult: SearchResult
+    private let result: SearchResultProtocol
+    private weak var delegate: SearchResultDelegate?
     
-    init(searchResult: SearchResult) {
-        self.searchResult = searchResult
+    init(result: SearchResultProtocol, delegate: SearchResultDelegate) {
+        self.result = result
+        self.delegate = delegate
     }
     
     
     var title: String {
-        return searchResult.title
+        return result.title ?? ""
     }
     
-    var lastEditTime: String {
+    var snippetHTML: String? {
+        //TODO: do the HTML
+        return result.snippet
+    }
+    
+    var lastEditHumanReadableTime: String {
         return ""
     }
+    
+    func openURL() {
+        guard
+            let url = result.fullURL,
+            let delegate = delegate else { return }
+        delegate.openSearchResultURL(url: url)
+    }
+ 
+
 }

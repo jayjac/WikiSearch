@@ -23,10 +23,10 @@ struct SnippetQueryFieldResponse: Codable {
 
 struct SnippetSearchResult: Codable {
     
-    let title: String
+    //let title: String
     let pageid: Int
     let snippet: String
-    let timestamp: String
+    //let timestamp: String
     
 }
 

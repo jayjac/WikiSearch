@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
         layoutManager.setupUI()
         searchBar.delegate = self
         tableView.dataSource = dataSource
+        tableView.delegate = dataSource
     }
 
 }
@@ -47,6 +48,11 @@ extension SearchViewController: UISearchBarDelegate {
         tableView.reloadData()
         searchManager.search(for: text)
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("cancel clicked")
+    }
+    
 }
 
 extension SearchViewController: SearchManagerDelegate {

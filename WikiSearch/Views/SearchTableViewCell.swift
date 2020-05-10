@@ -14,8 +14,6 @@ class SearchTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = UILabel()
     private let snippetWebView = WKWebView()
 
-    override func setSelected(_ selected: Bool, animated: Bool) {}
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -45,6 +43,8 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     private func addWebView() {
+        snippetWebView.backgroundColor = .clear
+        snippetWebView.isUserInteractionEnabled = false
         snippetWebView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(snippetWebView)
         NSLayoutConstraint.activate([
@@ -57,9 +57,10 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     
-    func setup(with searchResult: SearchResult) {
-        titleLabel.text = searchResult.title
-        snippetWebView.loadHTMLString(searchResult.snippetHTML, baseURL: nil)
+    func setup(with searchResultViewModel: SearchResultViewModel) {
+        titleLabel.text = searchResultViewModel.title
+//        guard let snippetHTML = searchResultViewModel.snippetHTML else { return }
+//        snippetWebView.loadHTMLString(snippetHTML, baseURL: nil)
     }
 
 }

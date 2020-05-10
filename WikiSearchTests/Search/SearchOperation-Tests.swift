@@ -27,7 +27,7 @@ class SearchOperation_Tests: XCTestCase {
     func test_No_server_Call_because_operation_cancelled() throws {
         let mockSession = MockURLSession()
         XCTAssertEqual(mockSession.dataTaskCalled, false)
-        let searchOperation = SearchOperation(searchText: "", page: 222)
+        let searchOperation = SearchOperation(searchText: "", page: 222, type: .snippet)
         searchOperation._setURLSession(mockSession)
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1 // To make sure I can add and cancel the next operation
