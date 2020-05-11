@@ -48,6 +48,7 @@ public class WikiPage: NSManagedObject, Decodable {
         // Always decode in background context
         self.init(context: CoreDataStack.shared.backgroundContext)
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        pageid = try values.decode(Int.self, forKey: .pageid).toString
         title = try values.decode(String.self, forKey: .title)
         fullURL = try? values.decode(URL.self, forKey: .fullurl)
         let timestamp = try values.decode(String.self, forKey: .touched)

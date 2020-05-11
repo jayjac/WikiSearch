@@ -46,7 +46,6 @@ class SearchScreenRootView: UIView {
     }
     
     private func addTableView() {
-        
         tableView.registerCellType(SearchTableViewCell.self)
         addSubview(tableView)
         NSLayoutConstraint.activate([

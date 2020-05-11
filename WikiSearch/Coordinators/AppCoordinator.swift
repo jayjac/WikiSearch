@@ -25,6 +25,7 @@ class AppCoordinator: Coordinator {
     
     func start() {
         window.rootViewController = rootViewController
+        searchViewController.searchResultDelegate = self
         window.makeKeyAndVisible()
     }
 }

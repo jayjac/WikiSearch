@@ -10,12 +10,12 @@ import UIKit
 
 class SearchTableViewDataSource: NSObject {
     
-    private var searchResults: [SearchResultViewModel] = [SearchResultViewModel]()
+    private var viewModels: [SearchResultViewModel] = [SearchResultViewModel]()
     
 
     
     func updateResults(_ resultsArray: [SearchResultViewModel]) {
-        searchResults = resultsArray
+        viewModels = resultsArray
     }
     
 }
@@ -27,13 +27,13 @@ extension SearchTableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCellType(SearchTableViewCell.self)
         let row = indexPath.row
-        let result = searchResults[row]
+        let result = viewModels[row]
         cell.setup(with: result)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        return viewModels.count
     }
 }
 
@@ -41,5 +41,7 @@ extension SearchTableViewDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vm = viewModels[indexPath.row]
+        vm.openURL()
     }
 }

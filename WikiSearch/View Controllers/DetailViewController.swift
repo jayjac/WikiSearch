@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    private let rootView: DetailScreenRootView = DetailScreenRootView()
+    let rootView: DetailScreenRootView = DetailScreenRootView()
 
 
     override func viewDidLoad() {

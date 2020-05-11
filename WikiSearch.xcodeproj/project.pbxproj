@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E9230376246519080093AE87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9230375246519080093AE87 /* Localizable.strings */; };
+		E939E49D2468E126005FB73C /* SearchResultViewModel-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939E49C2468E126005FB73C /* SearchResultViewModel-Tests.swift */; };
 		E94A90AF2462345D00B8F0B9 /* SearchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90AE2462345D00B8F0B9 /* SearchTableViewDataSource.swift */; };
 		E94A90B22462350B00B8F0B9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B12462350B00B8F0B9 /* SearchTableViewCell.swift */; };
 		E94A90B42462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */; };
 		E94A90B7246237BF00B8F0B9 /* SnippetSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90B6246237BF00B8F0B9 /* SnippetSearchResult.swift */; };
 		E94A90BB2462FDA400B8F0B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94A90BA2462FDA400B8F0B9 /* Coordinator.swift */; };
+		E97A25C424685ED700D15B68 /* ObjectsManager-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A25C324685ED700D15B68 /* ObjectsManager-Tests.swift */; };
 		E98EF5212465BC2D0071AB31 /* WikiSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */; };
 		E98EF5222465BC2F0071AB31 /* WikiSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */; };
 		E98EF5252465BDE10071AB31 /* CoreDataStack-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */; };
@@ -49,7 +51,7 @@
 		E9FF642A245DA92D002B9E39 /* WikiSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6428245DA92D002B9E39 /* WikiSearch.xcdatamodeld */; };
 		E9FF642C245DA92E002B9E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FF642B245DA92E002B9E39 /* Assets.xcassets */; };
 		E9FF642F245DA92E002B9E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FF642D245DA92E002B9E39 /* LaunchScreen.storyboard */; };
-		E9FF6445245DA92F002B9E39 /* WikiSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6444245DA92F002B9E39 /* WikiSearchUITests.swift */; };
+		E9FF6445245DA92F002B9E39 /* SearchScreen-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6444245DA92F002B9E39 /* SearchScreen-Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,11 +73,13 @@
 
 /* Begin PBXFileReference section */
 		E9230375246519080093AE87 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E939E49C2468E126005FB73C /* SearchResultViewModel-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultViewModel-Tests.swift"; sourceTree = "<group>"; };
 		E94A90AE2462345D00B8F0B9 /* SearchTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewDataSource.swift; sourceTree = "<group>"; };
 		E94A90B12462350B00B8F0B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
 		E94A90B6246237BF00B8F0B9 /* SnippetSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetSearchResult.swift; sourceTree = "<group>"; };
 		E94A90BA2462FDA400B8F0B9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E97A25C324685ED700D15B68 /* ObjectsManager-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObjectsManager-Tests.swift"; sourceTree = "<group>"; };
 		E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack-Tests.swift"; sourceTree = "<group>"; };
 		E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WikiPage-Tests.swift"; sourceTree = "<group>"; };
 		E99E7851246631A9007CFB93 /* Constants-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants-Tests.swift"; sourceTree = "<group>"; };
@@ -116,7 +120,7 @@
 		E9FF6435245DA92E002B9E39 /* WikiSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FF643B245DA92E002B9E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FF6440245DA92E002B9E39 /* WikiSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9FF6444245DA92F002B9E39 /* WikiSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiSearchUITests.swift; sourceTree = "<group>"; };
+		E9FF6444245DA92F002B9E39 /* SearchScreen-Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchScreen-Tests.swift"; sourceTree = "<group>"; };
 		E9FF6446245DA92F002B9E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				E94A90B12462350B00B8F0B9 /* SearchTableViewCell.swift */,
-				E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */,
 				E99E786724679905007CFB93 /* SearchScreenRootView.swift */,
 				E99E786924679D56007CFB93 /* DetailScreenRootView.swift */,
 			);
@@ -182,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				E98EF5242465BDE10071AB31 /* CoreDataStack-Tests.swift */,
+				E97A25C324685ED700D15B68 /* ObjectsManager-Tests.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				E9DE4E0924650A61001A1D8B /* URLSessionProtocol.swift */,
+				E94A90B32462377500B8F0B9 /* UITableViewCell+ReuseIdentifier.swift */,
 				E9DE4DF4246484E6001A1D8B /* Constants.swift */,
 				E99E785C24671CD1007CFB93 /* SwiftTypeExtensions.swift */,
 				E99E786224677B7A007CFB93 /* DatesManager.swift */,
@@ -241,6 +246,7 @@
 				E99E784F2465F44F007CFB93 /* WikiPage-Tests.swift */,
 				E9DE4DF024647B7B001A1D8B /* SearchResult-Tests.swift */,
 				E9FF120624684860001AAA25 /* URLAPIResponse-Tests.swift */,
+				E939E49C2468E126005FB73C /* SearchResultViewModel-Tests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,7 +334,7 @@
 		E9FF6443245DA92E002B9E39 /* WikiSearchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E9FF6444245DA92F002B9E39 /* WikiSearchUITests.swift */,
+				E9FF6444245DA92F002B9E39 /* SearchScreen-Tests.swift */,
 				E9FF6446245DA92F002B9E39 /* Info.plist */,
 			);
 			path = WikiSearchUITests;
@@ -506,11 +512,13 @@
 				E99E78502465F44F007CFB93 /* WikiPage-Tests.swift in Sources */,
 				E9DE4E012464DC31001A1D8B /* UITableViewCell+ReuseIdentifier-Tests.swift in Sources */,
 				E98EF5252465BDE10071AB31 /* CoreDataStack-Tests.swift in Sources */,
+				E939E49D2468E126005FB73C /* SearchResultViewModel-Tests.swift in Sources */,
 				E9FF120B24684C03001AAA25 /* WikiURLGenerator-Tests.swift in Sources */,
 				E99E7852246631A9007CFB93 /* Constants-Tests.swift in Sources */,
 				E9DE4E08246503D1001A1D8B /* SearchOperation-Tests.swift in Sources */,
 				E99E786624677C54007CFB93 /* DatesManager-Tests.swift in Sources */,
 				E9DE4E062464E42B001A1D8B /* SearchManager-Tests.swift in Sources */,
+				E97A25C424685ED700D15B68 /* ObjectsManager-Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FF6445245DA92F002B9E39 /* WikiSearchUITests.swift in Sources */,
+				E9FF6445245DA92F002B9E39 /* SearchScreen-Tests.swift in Sources */,
 				E98EF5222465BC2F0071AB31 /* WikiSearch.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

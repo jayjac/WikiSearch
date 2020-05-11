@@ -18,7 +18,7 @@ struct URLAPIResponse: Decodable {
 }
 
 struct URLQueryFieldResponse: Decodable {
-    let search: [String: WikiPage]
+    let pages: [String: WikiPage]
 }
 
 

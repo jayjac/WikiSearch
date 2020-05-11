@@ -8,8 +8,12 @@
 
 import Foundation
 
-
+/*
+ * Only contains static methods
+ */
 struct DatesManager {
+    
+    private init() {}
     
     private static let inDateFormatter: DateFormatter = {
         let fm = DateFormatter()

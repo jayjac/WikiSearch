@@ -27,9 +27,10 @@ class SearchOperation: Operation {
     private let request: URLRequest
     private let page: Int
     private let searchText: String
-    private(set) var searchResultArray: [SnippetSearchResult] = [SnippetSearchResult]()
-    private(set) var pagesObjectIDS: [NSManagedObjectID] = [NSManagedObjectID]()
+    private(set) var snippetSearchResults: [SnippetSearchResult] = [SnippetSearchResult]()
+    private(set) var pagesObjectIDDictionary: [String: NSManagedObjectID] = [String: NSManagedObjectID]()
     private var urlSession: URLSessionProtocol?
+    private(set) var operationError: Error?
     
     
     init(searchText: String,
@@ -38,27 +39,25 @@ class SearchOperation: Operation {
         self.type = type
         self.page = page
         self.searchText = searchText
-        let url = type == SearchOperationType.snippet ? WikiURLGenerator.generateSnippetSearchURL(page: page, for: searchText) : WikiURLGenerator.generateSnippetSearchURL(page: page, for: searchText)
+        let url = type == SearchOperationType.snippet ? WikiURLGenerator.generateSnippetSearchURL(page: page, for: searchText) : WikiURLGenerator.generateURLSearchURL(page: page, query: searchText)
         self.request = URLRequest(url: url)
     }
     
-    private func parseData(data: Data?) {
+    private func parseData(data: Data?) throws {
         guard let data = data else { return }
         switch type {
         case .snippet:
-            parseSnippetResponse(data: data)
+            guard let apiResponse = SnippetAPIResponse.parseSnippetResponse(data: data) else {
+                return
+            }
+            snippetSearchResults = apiResponse.query.search
             
         case .url:
-            pagesObjectIDS = CoreDataStack.shared.parseURLResponse(data: data)
-        
+            let objectsManager = ObjectsManager()
+            pagesObjectIDDictionary = try objectsManager.decodeURLAPIResponse(from: data)
         }
     }
 
-
-    private func parseSnippetResponse(data: Data) {
-        guard let apiResponse = try? JSONDecoder().decode(SnippetAPIResponse.self, from: data) else { return }
-        searchResultArray = apiResponse.query.search
-    }
     
     override func main() {
         if isCancelled {
@@ -70,11 +69,15 @@ class SearchOperation: Operation {
         session.resumedDataTask(with: request) { [weak self] (data: Data?, respose: URLResponse?, error: Error?) in
             guard
                 let strongSelf = self,
-                !strongSelf.isCancelled else { return } // If another request has come in, this will be deallocated
-            strongSelf.parseData(data: data)
+                !strongSelf.isCancelled else { return }
+            // If another request has happened in the meantime, this will be deallocated
+            do {
+                try strongSelf.parseData(data: data)
+            } catch let err {
+                self?.operationError = err
+            }
             dispatchGroup.leave()
         }
-
         dispatchGroup.wait()
     }
 

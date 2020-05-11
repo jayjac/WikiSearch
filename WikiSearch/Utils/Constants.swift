@@ -15,7 +15,6 @@ struct Constants {
     static let wikipediaBaseURLString: String = "https://en.wikipedia.org/w/api.php"
     
     static func wikipediaSearchBaseURL(language: String) -> String  {
-        
         return "https://\(language).wikipedia.org/w/api.php"
     }
     

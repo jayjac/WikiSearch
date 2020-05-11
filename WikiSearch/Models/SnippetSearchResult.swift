@@ -15,6 +15,10 @@ import Foundation
  */
 struct SnippetAPIResponse: Codable {
     let query: SnippetQueryFieldResponse
+    
+    static func parseSnippetResponse(data: Data) -> SnippetAPIResponse? {
+        return try? JSONDecoder().decode(SnippetAPIResponse.self, from: data)
+    }
 }
 
 struct SnippetQueryFieldResponse: Codable {
@@ -22,32 +26,9 @@ struct SnippetQueryFieldResponse: Codable {
 }
 
 struct SnippetSearchResult: Codable {
-    
-    //let title: String
     let pageid: Int
     let snippet: String
-    //let timestamp: String
-    
 }
 
 
-extension SnippetSearchResult {
-    
-    var snippetHTML: String {
-        return """
-        <!doctype html>
-        <html>
-        <head>
-        <style>
-        :root { color-scheme: light dark; }
-        body { font-size: 20pt; font-family: "Arial", sans-serif; }
-        .searchmatch { font-weight: 800; }
-        </style>
-        </head>
-        <body>
-        \(self.snippet)
-        </body>
-        </html>
-        """
-    }
-}
+

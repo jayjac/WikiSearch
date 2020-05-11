@@ -63,7 +63,7 @@ class WikiPage_Tests: XCTestCase {
         XCTAssertEqual(result.count, 0)
         let page = WikiPage(context: context)
         page.title = "blabla"
-        page.pageid = Int64(1234)
+        page.pageid = 1234.toString
         try context.save()
         result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)
         XCTAssertEqual(result.count, 1)
@@ -75,12 +75,12 @@ class WikiPage_Tests: XCTestCase {
         XCTAssertEqual(result.count, 0)
         let page = WikiPage(context: context)
         page.title = "blabla"
-        page.pageid = Int64(1234)
+        page.pageid = 1234.toString
 
         
         let page1 = WikiPage(context: context)
         page1.title = "blabla"
-        page1.pageid = Int64(1234)
+        page1.pageid = 1234.toString
 
         
         result = try context.fetch(WikiPage.fetchRequest() as NSFetchRequest<WikiPage>)

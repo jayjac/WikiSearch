@@ -17,10 +17,9 @@ class SearchViewController: UIViewController {
         let manager = SearchManager(delegate: self)
         return manager
     }()
-    private lazy var dataSource: SearchTableViewDataSource = SearchTableViewDataSource()
+    private(set) lazy var dataSource: SearchTableViewDataSource = SearchTableViewDataSource()
     weak var searchResultDelegate: SearchResultViewModelDelegate?
 
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +37,6 @@ extension SearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text else {
             return
         }
-
         tableView.reloadData()
         searchManager.search(for: text)
     }
@@ -51,6 +49,7 @@ extension SearchViewController: SearchManagerDelegate {
             SearchResultViewModel(result: $0, delegate: self.searchResultDelegate)
         }
         dataSource.updateResults(viewModels)
+        tableView.reloadData()
     }
 }
 

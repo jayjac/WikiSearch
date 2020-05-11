@@ -31,7 +31,8 @@ class DatesManager_Tests: XCTestCase {
         let date = try XCTUnwrap(DatesManager.date(from: "2020-05-08T02:41:50Z"))
         let frenchLocale = Locale(identifier: "fr")
         let frenchDate: String = DatesManager.humanReadableDateString(from: date, locale: frenchLocale, timeZone: timezone)
-        XCTAssertTrue(frenchDate.hasPrefix("8 mai 2020"))
+        XCTAssertTrue(frenchDate.hasPrefix("8 mai 2020")) 
+        XCTAssertTrue(frenchDate.hasSuffix("02:41:50"))
         
         let englishLocale = Locale(identifier: "en_US")
         let englishDate: String = DatesManager.humanReadableDateString(from: date, locale: englishLocale, timeZone: timezone)

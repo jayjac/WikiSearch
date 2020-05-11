@@ -36,32 +36,9 @@ class SearchResult_Tests: XCTestCase {
     }
     
     func test_SearchResult_NOT_created() throws {
-        let data = try XCTUnwrap(incorrectJSON.data(using: .utf8)) //Missing snippet
-        let result = try? JSONDecoder().decode(SnippetSearchResult.self, from: data)
+        let data = try XCTUnwrap(incorrectJSON.data(using: .utf8))
+        let result = try? JSONDecoder().decode(SnippetSearchResult.self, from: data) //Missing snippet
         XCTAssertNil(result)
     }
-
-    func test_HTML() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let searchResult = SnippetSearchResult(pageid: 12, snippet: "MY SNIPPET")
-        let html = """
-                    <!doctype html>
-                    <html>
-                    <head>
-                    <style>
-                    body { font-size: 18pt; font-family: "Arial", sans-serif; }
-                    .searchmatch { background-color: yellow; }
-                    </style>
-                    </head>
-                    <body>
-                    MY SNIPPET
-                    </body>
-                    </html>
-                    """.trimmingCharacters(in: .whitespacesAndNewlines)
-        XCTAssertEqual(searchResult.snippetHTML.trimmingCharacters(in: .whitespacesAndNewlines), html)
-    }
-
-
 
 }

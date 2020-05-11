@@ -27,10 +27,6 @@ class SearchManager {
         self.delegate = delegate
         queue.qualityOfService = .userInitiated
     }
-    
-
-    
-
 
     
 
@@ -41,41 +37,57 @@ class SearchManager {
     func search(for text: String, operation: SearchOperation? = nil) {
         queue.cancelAllOperations()
         
-        let op = operation ?? SearchOperation(searchText: text, page: 0, type: .url)
-        queue.addOperation(op)
+        let urlSearchOperation = operation ?? SearchOperation(searchText: text, page: 0, type: .url)
+        queue.addOperation(urlSearchOperation)
         
-        let op2 = SearchOperation(searchText: text, page: 0, type: .snippet)
-        op2.addDependency(op)
-        queue.addOperation(op2)
-        
+        let snippetSearchOperation = SearchOperation(searchText: text, page: 0, type: .snippet)
+        snippetSearchOperation.addDependency(urlSearchOperation)
+        queue.addOperation(snippetSearchOperation)
+
         queue.addBarrierBlock {
-            let pageIDs = op.pagesObjectIDS
-            print(pageIDs)
-            var snippetDictionary: [Int: String] = [Int: String]()
-            op2.searchResultArray.forEach { (result: SnippetSearchResult) in
-                snippetDictionary[result.pageid] = result.snippet
-            }
+ 
             let backgroundContext = CoreDataStack.shared.backgroundContext
             backgroundContext.automaticallyMergesChangesFromParent = true
+            //print(pageIDDictionary)
+            //print(snippetSearchOperation.snippetSearchResults)
             backgroundContext.performAndWait {
-                pageIDs.forEach { (objectID: NSManagedObjectID) in
-                    let page = backgroundContext.object(with: objectID) as! WikiPage
-                    let id = Int(page.pageid)
-                    // If a snippet exists
-                    print(page.title)
-                    if let matchingSnippet = snippetDictionary[id] {
-                        page.snippet = matchingSnippet
-                    }
-                    
+                let snippetResults = snippetSearchOperation.snippetSearchResults
+                for snippet in snippetResults {
+                    let predicate = NSPredicate(format: "pageid == %@", snippet.pageid.toString)
+                    let request = NSFetchRequest<WikiPage>(entityName: "WikiPage")
+                    request.predicate = predicate
+                    do {
+                        let pages = try backgroundContext.fetch(request)
+                        if let page = pages.first {
+                            page.snippet = snippet.snippet
+                            try backgroundContext.save()
+                        }
+                    } catch {}
                 }
             }
-            do {
-                try backgroundContext.save()
-            } catch {}
+
+            
             backgroundContext.reset()
             DispatchQueue.main.async {
                 let viewContext = CoreDataStack.shared.viewContext
-                let wikiPages = pageIDs.map { viewContext.object(with: $0) as! WikiPage }
+                do {
+                    try viewContext.save()
+                } catch {}
+                let snippets = snippetSearchOperation.snippetSearchResults
+                //print(snippets)
+                var wikiPages = [WikiPage]()
+                let pageids = snippets.map { $0.pageid.toString }
+                let predicate = NSPredicate(format: "pageid in (%@)", pageids)
+                let request: NSFetchRequest<WikiPage> = WikiPage.fetchRequest()
+                request.returnsObjectsAsFaults = false
+                request.predicate = predicate
+                let results = try? viewContext.fetch(request)
+                if let results = results {
+                    wikiPages = results
+                }
+//                do {
+//                    try viewContext.save()
+//                } catch {}
                 self.delegate?.searchManagerDidFindResults(wikiPages)
                 
             }

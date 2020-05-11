@@ -21,11 +21,13 @@ class DetailScreenRootView: UIView {
     init() {
         webView = WKWebView()
         super.init(frame: .zero)
+        setupUI()
     }
     
     private func setupUI() {
         addSubview(webView)
         webView.frame = bounds
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     func load(url: URL) {

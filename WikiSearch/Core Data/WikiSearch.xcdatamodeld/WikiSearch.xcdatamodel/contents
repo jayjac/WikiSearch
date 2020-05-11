@@ -2,10 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
     <entity name="WikiPage" representedClassName="WikiPage" syncable="YES">
         <attribute name="fullURL" attributeType="URI"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="lastRevision" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="pageid" attributeType="Integer 64" minValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pageid" attributeType="String" minValueString="0"/>
         <attribute name="saveDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="snippet" optional="YES" attributeType="String"/>
+        <attribute name="snippet" attributeType="String" defaultValueString=""/>
         <attribute name="title" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -14,6 +15,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="WikiPage" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="WikiPage" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

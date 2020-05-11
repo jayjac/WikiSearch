@@ -19,10 +19,6 @@ class SearchOperation_Tests: XCTestCase {
             dataTaskCalled = true
             completionHandler(nil, nil, nil)
         }
-        
-        
-        
-        
     }
 
     func test_No_server_Call_because_operation_cancelled() throws {

@@ -29,13 +29,32 @@ class SearchResultViewModel {
         return result.title ?? ""
     }
     
-    var snippetHTML: String? {
-        //TODO: do the HTML
-        return result.snippet
+    var snippetHTML: String {
+        guard let snippet = result.snippet else {
+            return ""
+        }
+        return """
+        <!doctype html>
+        <html>
+        <head>
+        <style>
+        :root { color-scheme: light dark; }
+        html, body { background-color: transparent; }
+        body { font-size: 20pt; font-family: "Arial", sans-serif; }
+        .searchmatch { font-weight: 800; }
+        </style>
+        </head>
+        <body>
+        \(snippet)
+        </body>
+        </html>
+        """
     }
-    
     var lastEditHumanReadableTime: String {
-        return ""
+        guard let date = result.lastRevision else {
+            return ""
+        }
+        return DatesManager.humanReadableDateString(from: date)
     }
     
     func openURL() {

@@ -15,16 +15,9 @@
 //
 //
 //public convenience required init(from decoder: Decoder) throws {
-//    self.init(context: CoreDataStack.shared.context)
-//    let values = try decoder.container(keyedBy: CodingKeys.self)
-//    title = try values.decode(String.self, forKey: .title)
-//    //snippet = try values.decode(String.self, forKey: .snippet)
-//    //url = try? values.decode(URL.self, forKey: .url)
-//    timestamp = try values.decode(String.self, forKey: .timestamp)
-//}
-
 import CoreData
 
+typealias CoreDataStackCompletionClosure = (NSPersistentStoreDescription, Error?) -> Void
 
 class CoreDataStack {
     
@@ -39,40 +32,15 @@ class CoreDataStack {
      */
     class func initialize(
         container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch"),
-                          completionClosure: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
-        if shared == nil {
-            shared = CoreDataStack(container: container, completionClosure: completionClosure)
-        }
-        #if DEBUG
-        shared.persistentContainer = container
-        #endif
+        completionClosure: @escaping CoreDataStackCompletionClosure) {
+        shared = CoreDataStack(container: container, completionClosure: completionClosure)
     }
     
     private init(container: NSPersistentContainer = NSPersistentContainer(name: "WikiSearch"), completionClosure: @escaping (NSPersistentStoreDescription, Error?) -> Void) {
         self.persistentContainer = container
         persistentContainer.loadPersistentStores(completionHandler: completionClosure)
     }
-    
-    
-    func parseURLResponse(data: Data) -> [NSManagedObjectID] {
-        var objectIDS = [NSManagedObjectID]()
-        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
-        context.performAndWait {
-            guard let apiResponse = try? JSONDecoder().decode(URLAPIResponse.self, from: data) else { return }
-            apiResponse.query.search.forEach { (page) in
-//                page.saveDate = Date()
-//                objectIDS.append(page.objectID)
-            }
-        }
-       do {
-            if context.hasChanges {
-                try context.save()
-            }
-       } catch {}
-        return objectIDS
-    }
-    
-    
+ 
 }
 
 

@@ -17,7 +17,7 @@ extension WikiPage {
         return NSFetchRequest<WikiPage>(entityName: "WikiPage")
     }
 
-    @NSManaged public var pageid: Int64
+    @NSManaged public var pageid: String
     @NSManaged public var title: String?
     @NSManaged public var snippet: String?
     @NSManaged public var fullURL: URL?

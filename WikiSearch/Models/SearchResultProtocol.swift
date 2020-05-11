@@ -15,5 +15,4 @@ protocol SearchResultProtocol {
     var lastRevision: Date? { get }
 }
 
-
 extension WikiPage: SearchResultProtocol {}

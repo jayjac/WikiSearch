@@ -15,8 +15,8 @@ protocol URLSessionProtocol {
 
 extension URLSession: URLSessionProtocol {
     func resumedDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        //let task = 
+        let task = dataTask(with: request, completionHandler: completionHandler)
+        task.resume()
     }
-    
 
 }
