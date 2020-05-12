@@ -21,6 +21,35 @@ extension NSManagedObjectContext: ManagedContextProtocol {}
  */
 class ObjectsManager {
     
+    func saveSnippetToPages(snippetResults: [SnippetSearchResult], in context: NSManagedObjectContext) {
+        context.performAndWait {
+            for snippet in snippetResults {
+                let predicate = NSPredicate(format: "pageid == %@", snippet.pageid.toString)
+                let request = NSFetchRequest<WikiPage>(entityName: "WikiPage")
+                request.predicate = predicate
+                do {
+                    let pages = try context.fetch(request)
+                    
+                    if let page = pages.first {
+                        page.snippet = snippet.snippet
+                        try context.save()
+                    }
+                } catch {}
+            }
+        }
+    }
+    
+    func retrievePages(with ids: [String], in context: NSManagedObjectContext) -> [WikiPage] {
+        let predicate = NSPredicate(format: "pageid in (%@)", ids)
+        let request: NSFetchRequest<WikiPage> = WikiPage.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        request.predicate = predicate
+        guard let results = try? context.fetch(request) else {
+            return [WikiPage]()
+        }
+        return results
+    }
+    
     
     func decodeURLAPIResponse(from data: Data,
                               context: ManagedContextProtocol = CoreDataStack.shared.backgroundContext) throws -> [String: NSManagedObjectID] {

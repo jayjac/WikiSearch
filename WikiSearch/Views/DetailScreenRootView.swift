@@ -26,6 +26,7 @@ class DetailScreenRootView: UIView {
     
     private func setupUI() {
         addSubview(webView)
+        webView.scalesLargeContentImage = false
         webView.frame = bounds
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }

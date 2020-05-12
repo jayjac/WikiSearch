@@ -29,6 +29,7 @@ extension SearchTableViewDataSource: UITableViewDataSource {
         let row = indexPath.row
         let result = viewModels[row]
         cell.setup(with: result)
+        cell.accessibilityIdentifier = "SearchTableViewCell"
         return cell
     }
     

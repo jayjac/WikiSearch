@@ -14,10 +14,14 @@ class SearchScreen_Tests: XCTestCase {
 
     
     func test_Components_Exist() throws {
+        
         let app = XCUIApplication()
+        app.launchArguments = ["UITEST-MOCK-RESULTS"]
         app.launch()
         XCTAssertTrue(app.tables["ResultsTableView"].exists)
+        XCTAssertTrue(app.tables["ResultsTableView"].firstMatch.cells.count == 50)
     }
+//
 
 
 
