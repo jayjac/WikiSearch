@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5577E0B6-A6CF-48F1-BB98-26611CC36EA0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DC181E9-E617-4A09-85A8-32E4B74C421B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikiSearch/View Controllers/SearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "searchManagerDidFail(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "245CF070-60DB-48D0-A8B8-ABB97AEA9042"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikiSearch/Core Data/ObjectsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "saveSnippetToPages(snippetResults:in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "245CF070-60DB-48D0-A8B8-ABB97AEA9042 - 1e9cad419d63580a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WikiSearch.ObjectsManager.saveSnippetToPages(snippetResults: Swift.Array&lt;WikiSearch.SnippetSearchResult&gt;, in: __C.NSManagedObjectContext) -&gt; ()"
+                  moduleName = "WikiSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayjac/Developer/AppleInterviewProject/WikiSearch/WikiSearch/Core%20Data/ObjectsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "250">
+               </Location>
+               <Location
+                  uuid = "245CF070-60DB-48D0-A8B8-ABB97AEA9042 - 135454a11a8b069d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in WikiSearch.ObjectsManager.saveSnippetToPages(snippetResults: Swift.Array&lt;WikiSearch.SnippetSearchResult&gt;, in: __C.NSManagedObjectContext) -&gt; ()"
+                  moduleName = "WikiSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayjac/Developer/AppleInterviewProject/WikiSearch/WikiSearch/Core%20Data/ObjectsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "199">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

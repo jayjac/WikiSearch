@@ -8,7 +8,7 @@
 
 import UIKit
 
-// bartycrouch code -p -l -a
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
