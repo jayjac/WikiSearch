@@ -8,7 +8,7 @@
 
 import UIKit
 
-// bartycrouch code -p /Users/jayjac/Developer/OfficialApps/Kroozeo/ReactNative/ios/Kroozeo/src -l /Users/jayjac/Developer/OfficialApps/Kroozeo/ReactNative/ios/Kroozeo/Localizable -a
+// bartycrouch code -p -l -a
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
