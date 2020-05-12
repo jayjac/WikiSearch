@@ -33,7 +33,7 @@ class SearchScreenRootView: UIView {
     
     private func addSearchBar() {
         addSubview(searchBar)
-        searchBar.placeholder = "Search WikiPedia"
+        searchBar.placeholder = NSLocalizedString("Search WikiPedia", comment: "Placeholder") //"Search WikiPedia"
         searchBar.accessibilityIdentifier = "WikiSearchBar"
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -42,7 +42,7 @@ class SearchScreenRootView: UIView {
         ])
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = .minimal
-        searchBar.prompt = "Search on WikiPedia"
+        searchBar.prompt = NSLocalizedString("WikiSearch", comment: "Search title") //"Search on WikiPedia"
     }
     
     private func addTableView() {

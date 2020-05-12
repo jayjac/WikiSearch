@@ -16,7 +16,7 @@ struct WikiURLGenerator {
      */
     static func generateSnippetSearchURL(page: Int,
                                   for query: String,
-                                  language: String = "en") -> URL {
+                                  language: String = Locale.preferredLanguages[0]) -> URL {
         guard var urlComponents = URLComponents(string: Constants.wikipediaSearchBaseURL(language: language)) else { fatalError() }
         let actionQI = URLQueryItem(name: "action", value: "query")
         let offsetQI = URLQueryItem(name: "sroffset", value: page.toString)
@@ -36,7 +36,7 @@ struct WikiURLGenerator {
      */
     static func generateURLSearchURL(page: Int,
                                      query: String,
-                                     language: String = "en") -> URL {
+                                     language: String = Locale.preferredLanguages[0]) -> URL {
         guard var urlComponents = URLComponents(string: Constants.wikipediaSearchBaseURL(language: language)) else { fatalError() }
         
         let actionQI = URLQueryItem(name: "action", value: "query")
